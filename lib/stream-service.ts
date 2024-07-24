@@ -1,28 +1,29 @@
 import { db } from "./db";
 import { getSelf } from "./auth-service";
 
-export const getFollowedUsers = async () => {
+export const getStreamByUserId = async (userId: string) => {
+    const stream = await db.stream.findUnique({
+        where: {userId}
+    })
+
+    return stream
+}
+
+// get users who are following current user
+export const getFollowingUsers = async () => {
     try{
         const self = await getSelf()
 
-        const followedUsers = db.follow.findMany({
+        const followingUsers = db.follow.findMany({
             where: {
-                followerId: self.id
+                followingId: self.id
             },
             include: {
-                following: {
-                    include:{
-                        stream:{
-                            select: {
-                                isLive:true
-                            },
-                        },
-                    },
-                },
+                follower: true
             },
         })
 
-        return followedUsers
+        return followingUsers
     } catch {
 
         return []
@@ -30,38 +31,8 @@ export const getFollowedUsers = async () => {
 
 }
 
-export const isFollowingUser = async (id: string) => {
-    try{
-        const self = await getSelf();
 
-        const otherUser = await db.user.findUnique({
-            where: {id},
-        })
-
-        if(!otherUser){
-            throw new Error("User not found")
-        }
-
-        if(otherUser.id === self.id){
-            return true
-        }
-
-        const existingFollow = await db.follow.findFirst({
-            where:{
-                followerId: self.id,
-                followingId: otherUser.id,
-            },
-        })
-
-        return !!existingFollow
-    }catch{
-
-        return false
-    }
-}
-
-
-export const followUser = async (id:string) => {
+export const startStream = async (id:string) => {
 
     const self = await getSelf();
 
