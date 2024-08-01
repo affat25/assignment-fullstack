@@ -39,7 +39,7 @@ export const StreamButton = ({
              }
          }   
     return (
-        <div className="space-y-2">
+        <div className="space-y-2 pl-3 pt-3">
              <Button 
             disabled= {isPending} 
             onClick={onClick} 

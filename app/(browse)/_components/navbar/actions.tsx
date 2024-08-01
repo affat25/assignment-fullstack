@@ -5,6 +5,7 @@ import { SignInButton,UserButton } from "@clerk/nextjs"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Clapperboard } from "lucide-react"
+import { NotificationFeed } from "@/components/notification-feed"
 
 
 
@@ -25,6 +26,7 @@ export const Actions = async () => {
 
         { !!user && (
             <div>
+                <NotificationFeed/>
                 <Button
                     size="sm"
                     variant="ghost"

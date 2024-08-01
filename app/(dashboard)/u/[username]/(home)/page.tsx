@@ -24,7 +24,10 @@ const CreatorPage = async ({
             <StreamPlayer 
                 user = {user}
                 stream = {user.stream}
-                isFollowing    
+                isFollowing
+                isHost
+                viewerId={user.id}
+                viewerName={user.username}    
             />
         </div>
     )
