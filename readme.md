@@ -121,4 +121,4 @@ Bonuses completed:
 
 ## Deployment
 
-The application is deployed and hosted on [Vercel](https://vercel.com). You can view the live application at [https://assignment-fullstack.vercel.app](https://assignment-fullstack.vercel.app) (replace this URL with your actual Vercel deployment URL).
+The application is deployed and hosted on [Vercel](https://vercel.com). You can view the live application at [https://stonks-assignment-fullstack.vercel.app](https://stonks-assignment-fullstack.vercel.app) (replace this URL with your actual Vercel deployment URL).
