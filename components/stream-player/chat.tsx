@@ -55,6 +55,12 @@ export const LiveChat = ({
         async function init() {
             const chatClient = new StreamChat(process.env.NEXT_PUBLIC_STREAM_API_KEY!)
                 
+            // const {token} = await fetch('/api/webhooks/stream',{
+            //     method:'POST',
+            //     body: JSON.stringify({
+            //         id:user.id
+            //     })
+            // }).then(r=>r.json())
             
             await chatClient.connectUser(user,chatClient.devToken(user.id))
             
@@ -69,6 +75,7 @@ export const LiveChat = ({
 
 
         init()
+
         if(client) return () => client.disconnectUser()
     }, [user.id])
 
