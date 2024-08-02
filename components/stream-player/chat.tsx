@@ -53,7 +53,7 @@ export const LiveChat = ({
         if (!user?.id) return 
 
         async function init() {
-            const chatClient = StreamChat.getInstance(process.env.NEXT_PUBLIC_STREAM_API_KEY!)
+            const chatClient = new StreamChat(process.env.NEXT_PUBLIC_STREAM_API_KEY!)
                 
             
             await chatClient.connectUser(user,chatClient.devToken(user.id))
